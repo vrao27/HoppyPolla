@@ -1,17 +1,40 @@
 const Recipe = require("../Models/recipemodel");
+const mongoose = require("mongoose");
 
-//get all recipes
+//all of the following functions are async
+
+//get all recipes - we can use the FIND and SORT methods to filter out recipes
+const getRecipes = async (req, res) => {
+  const allRecipes = await Recipe.find({}).sort({ createdAt: -1 });
+
+  res.status(200).json(allRecipes);
+};
 
 //get single recipe
+
+const getSingleRecipe = async (req, res) => {
+  const { id } = req.params;
+
+  //this is done to check the id from mongoose and if this is not there then the error is displayed
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such brew" });
+  }
+
+  const recipe = await Recipe.findById(id);
+
+  if (!recipe) {
+    return res.status(404).json({ error: "Brew recipe does not exist" });
+  }
+  res.status(200).json(recipe);
+};
 
 //create a recipe
 const createRecipe = async (req, res) => {
   const { title, description } = req.body;
 
-
-  //addind recipe doc to db
+  //adding recipe doc to db
   try {
-    const recipe1 = await Recipe.create({ title, description });
+    const recipe = await Recipe.create({ title, description });
     res.status(200).json(recipe1);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -22,8 +45,9 @@ const createRecipe = async (req, res) => {
 
 //update a recipe
 
-
 //this is set to an object with different properties which are the fucntions
-module.exports = { 
-    createRecipe
-}
+module.exports = {
+  createRecipe,
+  getRecipes,
+  getSingleRecipe,
+};

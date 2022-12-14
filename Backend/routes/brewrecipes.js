@@ -1,16 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const { createRecipe } = require("../controllers/recipecontrollers");
+const {
+  createRecipe,
+  getRecipes,
+  getSingleRecipe,
+} = require("../controllers/recipecontrollers");
+
 
 //Get aLL recipes
-router.get("/", (req, res) => {
-  res.json({ msg: "all recipes" });
-});
+router.get("/", getRecipes);
 
 //GEt a single recipe
-router.get("/:id", (req, res) => {
-  res.json({ msg: "single recipe" });
-});
+router.get("/:id", getSingleRecipe);
 
 //Post a recipe
 router.post("/", createRecipe);

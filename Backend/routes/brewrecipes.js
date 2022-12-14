@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { createRecipe } = require("../controllers/recipecontrollers");
 
 //Get aLL recipes
 router.get("/", (req, res) => {
@@ -12,9 +13,7 @@ router.get("/:id", (req, res) => {
 });
 
 //Post a recipe
-router.post("/", (req, res) => {
-  res.json({ msg: "post a recipe" });
-});
+router.post("/", createRecipe);
 
 //Delete a recipe
 router.delete("/:id", (req, res) => {

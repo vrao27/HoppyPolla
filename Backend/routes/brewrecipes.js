@@ -4,26 +4,23 @@ const {
   createRecipe,
   getRecipes,
   getSingleRecipe,
+  deleteRecipe,
+  updateRecipe,
 } = require("../controllers/recipecontrollers");
-
 
 //Get aLL recipes
 router.get("/", getRecipes);
 
-//GEt a single recipe
+//GET a single recipe
 router.get("/:id", getSingleRecipe);
 
-//Post a recipe
+//POST/CREATE a recipe
 router.post("/", createRecipe);
 
-//Delete a recipe
-router.delete("/:id", (req, res) => {
-  res.json({ msg: "delete a recipe" });
-});
+//DELETE a recipe
+router.delete("/:id", deleteRecipe);
 
-//Update a recipe
-router.patch("/:id", (req, res) => {
-  res.json({ msg: "update a recipe" });
-});
+//PATCH/UPDATE a recipe
+router.patch("/:id", updateRecipe);
 
 module.exports = router;

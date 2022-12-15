@@ -58,12 +58,45 @@ const createRecipe = async (req, res) => {
 };
 
 //delete a recipe
+const deleteRecipe = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such brew" });
+  }
+  //we use underscore id _id since id in mongo is defined like that
+  const recipe = await Recipe.findOneAndDelete({ _id: id });
+
+  if (!recipe) {
+    return res.status(404).json({ error: "Brew recipe does not exist" });
+  }
+
+  res.status(200).json(recipe);
+};
 
 //update a recipe
+
+const updateRecipe = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such brew" });
+  }
+  //we use the spread operator to update the elements in the recipe body eg. title, maschSchedule etc
+  const recipe = await Recipe.findOneAndUpdate({ _id: id }, { ...req.body });
+
+  if (!recipe) {
+    return res.status(404).json({ error: "Brew recipe does not exist" });
+  }
+
+  res.status(200).json(recipe);
+};
 
 //this is set to an object with different properties which are the fucntions
 module.exports = {
   createRecipe,
   getRecipes,
   getSingleRecipe,
+  deleteRecipe,
+  updateRecipe
 };

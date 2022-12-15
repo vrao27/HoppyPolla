@@ -30,12 +30,28 @@ const getSingleRecipe = async (req, res) => {
 
 //create a recipe
 const createRecipe = async (req, res) => {
-  const { title, description } = req.body;
+  const {
+    title,
+    description,
+    brewingWater,
+    mashGrains,
+    mashSchedule,
+    boil,
+    fermentation,
+  } = req.body;
 
   //adding recipe doc to db
   try {
-    const recipe = await Recipe.create({ title, description });
-    res.status(200).json(recipe1);
+    const recipe = await Recipe.create({
+      title,
+      description,
+      brewingWater,
+      mashGrains,
+      mashSchedule,
+      boil,
+      fermentation,
+    });
+    res.status(200).json(recipe);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

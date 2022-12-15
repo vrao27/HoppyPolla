@@ -74,22 +74,62 @@ const deleteRecipe = async (req, res) => {
   res.status(200).json(recipe);
 };
 
-//update a recipe
+//update/PATCH a recipe
 
 const updateRecipe = async (req, res) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such brew" });
-  }
   //we use the spread operator to update the elements in the recipe body eg. title, maschSchedule etc
-  const recipe = await Recipe.findOneAndUpdate({ _id: id }, { ...req.body });
 
-  if (!recipe) {
-    return res.status(404).json({ error: "Brew recipe does not exist" });
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({ error: "No such brew" });
+    }
+    // const updatedRecipe = {
+    //   ...(req.body.title && {
+    //     title: {
+    //       ...(req.body.title.name && { name: req.body.title.name }),
+    //       ...(req.body.title.category && { name: req.body.title.category }),
+    //       ...(req.body.title.defaultQty && { name: req.body.title.defaultQty }),
+    //       ...(req.body.title.image && { name: req.body.title.image }),
+    //     },
+    //   }),
+    //   ...(req.body.description && {
+    //     description: {
+    //       ...(req.body.description.text && { name: req.body.description.text }),
+    //       ...(req.body.description.originalGravity && {
+    //         name: req.body.description.originalGravity,
+    //       }),
+    //       ...(req.body.description.bitterness && {
+    //         name: req.body.description.bitterness,
+    //       }),
+    //       ...(req.body.description.color && {
+    //         name: req.body.description.color,
+    //       }),
+    //       ...(req.body.description.alcohol && {
+    //         name: req.body.description.alcohol,
+    //       }),
+    //     },
+    //   }),
+    // };
+
+    // console.log(updatedRecipe);
+
+    const recipe = await Recipe.findByIdAndUpdate(
+      { _id: id },
+      //{ updatedRecipe },
+      { ...req.body },
+      { new: true }
+    );
+    //console.log(req.body);
+    if (!recipe) {
+      return res.status(404).json({ error: "Brew recipe does not exist" });
+    }
+
+    res.status(200).json(recipe);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
-
-  res.status(200).json(recipe);
 };
 
 //this is set to an object with different properties which are the fucntions
@@ -98,5 +138,5 @@ module.exports = {
   getRecipes,
   getSingleRecipe,
   deleteRecipe,
-  updateRecipe
+  updateRecipe,
 };

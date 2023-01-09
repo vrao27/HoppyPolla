@@ -8,6 +8,9 @@ const {
   updateRecipe,
 } = require("../controllers/recipecontrollers");
 
+// const bodyParser = require("body-parser");
+// //router.use(bodyParser.json());
+// app.use(express.json())
 //Get aLL recipes
 router.get("/", getRecipes);
 

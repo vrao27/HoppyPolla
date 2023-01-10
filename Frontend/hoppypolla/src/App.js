@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import BrewRecipeContextProvider from "./context/BrewRecipeContextProvider";
+import { BrewRecipeContextProvider } from "./context/BrewRecipeContext";
 
 //pages 
 import Home from './pages/Home'
@@ -14,18 +14,16 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
-        <div className="pages">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/brew" element={<Brew />} />
-            <Route path="/brew/:id" element={({ match }) => (
-              <BrewRecipeContextProvider brewRecipeId={match.params.id}>
-                <BrewRecipeDetails />
-              </BrewRecipeContextProvider>
-            )} />
-          </Routes>
-        </div>
+        <BrewRecipeContextProvider>
+          <Navbar />
+          <div className="pages">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/brew" element={<Brew />} />
+              <Route path="/brew/:id" element={<BrewRecipeDetails />} />
+            </Routes>
+          </div>
+        </BrewRecipeContextProvider>
       </BrowserRouter>
     </div>
   );

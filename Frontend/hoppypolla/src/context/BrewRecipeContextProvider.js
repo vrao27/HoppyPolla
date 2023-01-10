@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import BrewRecipeContext from "./context/BrewRecipeContext"; // import the context
+import BrewRecipeContext from "../context/BrewRecipeContext"; // import the context
 
-const BrewRecipeContextProvider = ({ brewRecipeId }) => {
+const BrewRecipeContextProvider = ({ brewRecipeId, children }) => {
   const [brewRecipe, setBrewRecipe] = useState(null);
-  
+
   useEffect(() => {
     // Use a function that fetches the data for the specific brew recipe
     // based on the brewRecipeId passed as a prop
@@ -16,11 +16,8 @@ const BrewRecipeContextProvider = ({ brewRecipeId }) => {
   }, [brewRecipeId]);
 
   return (
-    <BrewRecipeContext.Provider value={brewRecipe}>
-      <BrewRecipeDetails brewRecipe={brewRecipe} />
-    </BrewRecipeContext.Provider>
+    <BrewRecipeContext.Provider value={brewRecipe}></BrewRecipeContext.Provider>
   );
 };
 
-
-export default BrewRecipeContextProvider
+export default BrewRecipeContextProvider;

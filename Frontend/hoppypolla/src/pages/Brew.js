@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import BrewRecipeContextProvider from "./context/BrewRecipeContext"; // import the context provider component
-import BrewRecipeDetails from "../components/BrewRecipeDetails";
+import { BrewRecipeContextProvider } from "./context/BrewRecipeContext"; // import the context provider component
+//import BrewRecipeDetails from "../components/BrewRecipeDetails";
 import BrewRecipesMap from "../components/BrewRecipesMap";
 
 const port = "http://localhost:4000/api/brewrecipes";
@@ -30,24 +30,14 @@ const BrewRecipe = () => {
             <BrewRecipesMap brewRecipe={brewRecipe} />
           </Link>
         ))}
-      <BrewRecipeContextProvider brewRecipeId={brewRecipe._id}> 
-      <BrewRecipeDetails />
-    </BrewRecipeContextProvider>
+      <BrewRecipeContextProvider
+        brewRecipeId={brewRecipe._id}
+      ></BrewRecipeContextProvider>
     </div>
   );
-
 };
 
-
 export default BrewRecipe;
-
-
-
-
-
-
-
-
 
 // import { useEffect, useState } from "react";
 // import BrewRecipeDetails from "../components/BrewRecipeDetails";
@@ -84,13 +74,9 @@ export default BrewRecipe;
 //     </div>
 //   );
 
-
 // };
 
 // export default BrewRecipe;
-
-
-
 
 //   return (
 //     <div className="brewRecipe">

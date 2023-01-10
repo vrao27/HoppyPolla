@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import BrewRecipeContext from './context/BrewRecipeContext';
+import { BrewRecipeContext } from "./context/BrewRecipeContext";
 
 const BrewRecipesMap = ({brewRecipe}) => {
   const [currentRecipe, setCurrentRecipe] = useState(null);

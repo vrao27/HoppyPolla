@@ -1,14 +1,10 @@
-import { useReducer, createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const BrewRecipeContext = createContext();
 
-const useRecipe = () => useContext(BrewRecipeContext)
-
+const useRecipe = () => useContext(BrewRecipeContext);
 
 const BrewRecipeContextProvider = ({ children }) => {
-  // const [state, dispatch] = useReducer(brewRecipeReducer, {
-  //   brewRecipes: brewRecipes,
-  // });
   const port = "http://localhost:4000/api/brewrecipes";
   const [brewRecipes, setBrewRecipes] = useState([]);
 
@@ -21,7 +17,6 @@ const BrewRecipeContextProvider = ({ children }) => {
     fetchRecipes();
   }, []);
 
-
   return (
     <BrewRecipeContext.Provider value={{ brewRecipes, setBrewRecipes }}>
       {children}
@@ -29,23 +24,4 @@ const BrewRecipeContextProvider = ({ children }) => {
   );
 };
 
-
-
-
-
-// const brewRecipeReducer = (state, action) => {
-//   switch (action.type) {
-//     case "SET_CURRENTRECIPE":
-//       return {
-//         brewRecipe: action.payload,
-//       };
-//     case "CREATE_BREWRECIPE":
-//       return {
-//         brewRecipe: [action.payload, ...state.brewRecipe],
-//       };
-//     default:
-//       return state;
-//   }
-// };
-
-export { useRecipe, BrewRecipeContext, BrewRecipeContextProvider }
+export { useRecipe, BrewRecipeContext, BrewRecipeContextProvider };

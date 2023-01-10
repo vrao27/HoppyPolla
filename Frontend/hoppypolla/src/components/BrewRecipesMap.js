@@ -8,7 +8,7 @@ const BrewRecipesMap = ({ brewRecipe }) => {
   return (
     <div className="brewrecipes-map">
       <Link to={`/brew/${brewRecipe._id}`}>
-        <h1>{brewRecipe.title.name}</h1>
+        <h2>{brewRecipe.title.name}</h2>
       </Link>
       <p>Category: {brewRecipe.title.category}</p>
         <Outlet />

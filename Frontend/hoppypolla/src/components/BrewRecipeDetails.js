@@ -15,7 +15,7 @@ const BrewRecipeDetails = () => {
         .filter((brewRecipe) => (id ? id === brewRecipe._id : brewRecipe))
         .map(
           ({
-            title: { name, category, image, defaultQty },
+            title: { name, category, defaultQty },
             description,
             brewingWater,
             mashGrains,
@@ -26,8 +26,7 @@ const BrewRecipeDetails = () => {
             <div className="brew-recipe-details">
               <h1>{name}</h1>
               <p>Category: {category}</p>
-              <p>Default Quantity: {defaultQty}</p>
-              <img src={image} alt={name} />
+              <p>Default Quantity: {defaultQty} Liters</p>
               <h2>Description</h2>
               <p>{description.text}</p>
               <p>Original Gravity: {description.originalGravity}</p>

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import  { useState } from "react";
+
+
 
 const BeerRecipeForm = () => {
 const [error, setError] = useState(null)
@@ -9,6 +11,7 @@ const [title, setTitle] = useState({
     defaultQty: "",
     image: "",
   });
+
 const [description, setDescription] = useState({
     text: "",
     originalGravity: "",
@@ -16,14 +19,17 @@ const [description, setDescription] = useState({
     color: "",
     alcohol: "",
   });
+
 const [brewingWater, setBrewingWater] = useState({
     mainInfusion: "",
     sparge: "",
     total: "",
   });
+
 const [mashGrains, setMashGrains] = useState({
     grainType: "",
   });
+
 const [mashSchedule, setMashSchedule] = useState({
     mashIn: "",
     rest1: {
@@ -40,11 +46,13 @@ const [mashSchedule, setMashSchedule] = useState({
     },
     mashOut: "",
   });
+
 const [boil, setBoil] = useState({
     time: "",
     hopType: "",
     hopAddOn: "",
   });
+
   const [fermentation, setFermentation] = useState({
     yeast: "",
     fermentationTemperature: "",
@@ -111,6 +119,7 @@ const [boil, setBoil] = useState({
       boil,
       fermentation,
     };
+
     fetch("/api/brewrecipes", {
       method: "POST",
       headers: {
@@ -128,7 +137,7 @@ const [boil, setBoil] = useState({
   };
 
   return (
-    <form className="create" onSubmit={handleSubmit}>
+    <form className="create-recipe" onSubmit={handleSubmit}>
       <h2>Title</h2>
       <label>
         Name:

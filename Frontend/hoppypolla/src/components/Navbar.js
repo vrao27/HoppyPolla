@@ -1,9 +1,11 @@
 import {Link} from 'react-router-dom'
+import HoppyPolla from '../images/HoppyPolla.png'
 
 
 const Navbar = () => {
   return (
     <header>
+      <img className="nav-img" src={HoppyPolla} alt="hoppypolla" />
       <div className="nav-container">
         <h1>HoppyPolla</h1>
         <Link to="/">

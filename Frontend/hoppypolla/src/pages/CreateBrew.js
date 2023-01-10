@@ -1,4 +1,3 @@
-import React from 'react';
 import BeerRecipeForm from '../components/RecipeForm';
 
 export default function CreateBrew () {

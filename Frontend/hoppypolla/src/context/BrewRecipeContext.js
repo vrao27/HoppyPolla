@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useReducer, createContext } from "react";
 
 export const BrewRecipeContext = createContext();
 
@@ -8,28 +8,23 @@ export const brewRecipeReducer = (state, action) => {
         return {
             brewRecipe: action.payload
         }
-
     case 'CREATE_BREWRECIPE': 
         return {
              brewRecipe: [action.payload, ...state.brewRecipe]
         }
-        default: 
+    default: 
         return state
  }
 }
 
-export const BrewRecipeContextProvider = ({ children }) => {
-
+export const BrewRecipeContextProvider = ({ children, brewRecipes }) => {
     const [state, dispatch] = useReducer(brewRecipeReducer, {
-    brewRecipes: null
+    brewRecipes: brewRecipes
     })
 
-//dispatch describes the State change
-
-
-  return (
-  <BrewRecipeContext.Provider value = {{state, dispatch}>
-  { children }
-  </BrewRecipeContext.Provider>
-  )
+    return (
+    <BrewRecipeContext.Provider value = {{state, dispatch}}>
+      {children}
+    </BrewRecipeContext.Provider>
+    )
 };

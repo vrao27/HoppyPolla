@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BrewRecipeContext } from "../context/BrewRecipeContext";
+import { BrewRecipeContext } from "./context/BrewRecipeContext";
 
 const BrewRecipeDetails = () => {
   const { brewRecipe } = useContext(BrewRecipeContext);

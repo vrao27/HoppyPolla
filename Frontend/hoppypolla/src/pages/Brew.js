@@ -3,6 +3,7 @@ import { BrewRecipeContextProvider } from "../context/BrewRecipeContext"; // imp
 //import BrewRecipeDetails from "../components/BrewRecipeDetails";
 import BrewRecipesMap from "../components/BrewRecipesMap";
 import { Link } from "react-router-dom";
+import { BrewRecipeContext } from "../context/BrewRecipeContext";
 
 const port = "http://localhost:4000/api/brewrecipes";
 
@@ -13,7 +14,7 @@ const BrewRecipe = () => {
     const fetchRecipes = async () => {
       const response = await fetch(port);
       const json = await response.json();
-      return setBrewRecipes(json);
+      setBrewRecipes(json);
 
       //check if response is ok
       // if (response.ok) {

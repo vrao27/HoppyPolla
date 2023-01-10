@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Link, Outlet } from "react-router-dom";
 import { BrewRecipeContext } from "../context/BrewRecipeContext";
 
-const BrewRecipesMap = ({brewRecipe}) => {
+const { brewRecipe } = useContext(BrewRecipeContext);
+
+const BrewRecipesMap = ({ brewRecipe }) => {
   const [currentRecipe, setCurrentRecipe] = useState(null);
 
   useEffect(() => {
@@ -10,7 +12,7 @@ const BrewRecipesMap = ({brewRecipe}) => {
   }, [brewRecipe]);
 
   return (
-    <div className='brewrecipes-map'>
+    <div className="brewrecipes-map">
       <Link to={`/brew/${brewRecipe._id}`}>
         <h1>{brewRecipe.title.name}</h1>
       </Link>
@@ -24,17 +26,8 @@ const BrewRecipesMap = ({brewRecipe}) => {
 
 export default BrewRecipesMap;
 
-
-
-
-
-
-
-
-
 // import {useState, useEffect} from 'react';
 // import {Link, Outlet} from 'react-router-dom';
-
 
 // function BrewRecipesMap({brewRecipe}) {
 //     // The brewRecipe variable is now defined and can be used in the component
@@ -63,14 +56,6 @@ export default BrewRecipesMap;
 //       </div>
 //     )
 //   }
-
-
-
- 
-
-
-
-
 
 // export function BrewRecipesMap({brewRecipe}) {
 //     // The brewRecipe variable is now defined and can be used in the component

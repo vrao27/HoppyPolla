@@ -1,11 +1,8 @@
-
-import { useContext } from 'react';
-import { BrewRecipeContext } from '../context/BrewRecipeContext';
+import { useContext } from "react";
+import { BrewRecipeContext } from "../context/BrewRecipeContext";
 
 const BrewRecipeDetails = () => {
-const brewRecipe = useContext(BrewRecipeContext);
-
-  
+  const { brewRecipe } = useContext(BrewRecipeContext);
 
   if (!brewRecipe) {
     return <div>Loading...</div>;
@@ -69,11 +66,7 @@ const brewRecipe = useContext(BrewRecipeContext);
   );
 };
 
-export default BrewRecipeDetails
-
-
-
-
+export default BrewRecipeDetails;
 
 // import { useParams, useOutletContext } from "react-router-dom";
 
@@ -142,7 +135,5 @@ export default BrewRecipeDetails
 //     </div>
 //   );
 // };
-
-
 
 // { brewRecipe:{title: {name, category, image, defaultQty}, description, brewingWater, mashGrains, mashSchedule, boil, fermentation} }

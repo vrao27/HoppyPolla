@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BrewRecipeContext from "../context/BrewRecipeContext"; // import the context
+import { BrewRecipeContext } from "../context/BrewRecipeContext"; // import the context
 
 const BrewRecipeContextProvider = ({ brewRecipeId, children }) => {
   const [brewRecipe, setBrewRecipe] = useState(null);
@@ -16,7 +16,9 @@ const BrewRecipeContextProvider = ({ brewRecipeId, children }) => {
   }, [brewRecipeId]);
 
   return (
-    <BrewRecipeContext.Provider value={brewRecipe}></BrewRecipeContext.Provider>
+    <BrewRecipeContext.Provider value={brewRecipe}>
+      {children}
+    </BrewRecipeContext.Provider>
   );
 };
 

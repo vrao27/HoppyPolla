@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { BrewRecipeContextProvider } from "./context/BrewRecipeContext"; // import the context provider component
+import { BrewRecipeContextProvider } from "../context/BrewRecipeContext"; // import the context provider component
 //import BrewRecipeDetails from "../components/BrewRecipeDetails";
 import BrewRecipesMap from "../components/BrewRecipesMap";
+import { Link } from "react-router-dom";
 
 const port = "http://localhost:4000/api/brewrecipes";
 

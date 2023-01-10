@@ -4,10 +4,11 @@ import "./index.css";
 import App from "./App";
 import BrewRecipeContextProvider from "./context/BrewRecipeContextProvider";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrewRecipeContextProvider>
+    <BrewRecipeContextProvider >
       <App />
     </BrewRecipeContextProvider>
   </React.StrictMode>

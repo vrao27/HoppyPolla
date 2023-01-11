@@ -8,14 +8,14 @@ import Brew from './pages/Brew'
 //components
 import Navbar from "./components/Navbar";
 import BrewRecipeDetails from "./components/BrewRecipeDetails";
-import BrewRecipesMap from "./components/BrewRecipesMap";
+
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Navbar />
         <BrewRecipeContextProvider>
-          <Navbar />
           <div className="pages">
             <Routes>
               <Route path="/" element={<Home />} />

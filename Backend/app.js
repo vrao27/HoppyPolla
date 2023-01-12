@@ -5,6 +5,7 @@ const app = express();
 const brewrecipeRoutes = require("./routes/brewrecipes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const userRoutes = require('./routes/user')
 // Set the strictQuery option to false
 mongoose.set("strictQuery", false);
 
@@ -20,6 +21,7 @@ app.use(cors());
 
 //routes
 app.use("/api/brewrecipes", brewrecipeRoutes);
+app.use("/api/user", userRoutes);
 
 //connect to db
 mongoose

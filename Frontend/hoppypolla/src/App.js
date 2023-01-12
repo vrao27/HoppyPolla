@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
         <AuthContextProvider>
+          <Navbar />
           <BrewRecipeContextProvider>
             <div className="pages">
               <Routes>

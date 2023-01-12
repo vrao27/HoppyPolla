@@ -15,6 +15,12 @@ const Navbar = () => {
         <Link to="/brewing-101">Brewing 101</Link>
         <Link to="/create-brew">Create Brew</Link>
         <Link to="/contact">Contact</Link>
+        <nav>
+          <div>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+          </div>
+        </nav>
       </div>
     </header>
   );

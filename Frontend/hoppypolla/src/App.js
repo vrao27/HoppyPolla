@@ -5,11 +5,12 @@ import { AuthContextProvider } from "./context/AuthContext";
 //pages
 import Home from "./pages/Home";
 import Brew from "./pages/Brew";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 //components
 import Navbar from "./components/Navbar";
 import BrewRecipeDetails from "./components/BrewRecipeDetails";
-import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/brew" element={<Brew />} />
                 <Route path="/brew/:id" element={<BrewRecipeDetails />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
               </Routes>
             </div>
           </BrewRecipeContextProvider>
